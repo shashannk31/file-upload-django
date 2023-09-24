@@ -2,7 +2,7 @@
 
 This repository consists of a web application with user authentication system and file upload featute. For a new user, a signup feature is provided where the user can signup with a username, email and password. Existing users can login with their usernames and password. Only authenticated users who are logged in can use the file upload feature. When a user uploads a file, it gets stored in the server. Once the file is uploaded the user can logout of the session.
 
-step1: clone the repository into the local system
+step1: clone the repository into the local system using the command 'git clone https://github.com/shashannk31/file-upload-django.git'
 step2: move to the location where you have cloned the repository
 step3: type the command 'python manage.py runserver' and hit enter
 step4: since it is the first time you are using this application click on sign up link
