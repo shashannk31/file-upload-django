@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Georama:ital,wght@1,500&family=Mooli&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Assignment</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("{% static 'app/loginbg.jpg' %}");  
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .formcontainer {
+            background-color: rgb(214, 208, 208, 0.87); 
+            padding: 20px; 
+            border-radius: 6px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.86); 
+            width: 80%; 
+            max-width: 300px; 
+            font-family: 'Mooli', sans-serif;
+        }
+
+        .formelements {
+            padding: 5px;
+            margin: 8px;
+            color: rgb(24, 24, 24);
+            font-family: 'Mooli', sans-serif;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Mooli', sans-serif;
+        }
+
+        button[type="submit"] {
+            background-color: #282726;
+            color: rgb(242, 233, 233);
+            padding: 9px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid #000000;
+            font-family: 'Mooli', sans-serif;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3b3b3b;
+        }
+
+        .errorclass {
+            background-color: rgba(255, 0, 0, 0.6);
+            padding: 2px;
+            font-size: 15.5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="formcontainer">
+        <form method="post" class="formclass">
+            {% csrf_token %}
+            <div class="formelements">
+                <label for="username"><b>Username</b></label>
+                <input type="text" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="formelements">
+                <label for="password"><b>Password</b></label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="formelements">
+                <button type="submit">Login</button>
+            </div>
+            <div class="formelements">Don't have an account with us? <a href="{% url 'signupuser' %}">Sign up</a></div>
+            {% if error %}
+                <div class="errorclass">{{ error }}</div>
+            {% endif %}
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+
+
+

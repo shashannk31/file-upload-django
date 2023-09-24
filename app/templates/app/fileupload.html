@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Georama:ital,wght@1,500&family=Mooli&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Assignment</title>
+    <style>
+        header {
+            background-color: rgb(214, 208, 208, 0.87);
+            font-family: 'Mooli', sans-serif;
+            padding: 15px; 
+            padding-bottom: 5px;
+            padding-top: 5px;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 100; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("{% static 'app/fileuploadbg.jpg' %}");  
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .formcontainer {
+            background-color: rgb(214, 208, 208, 0.87); 
+            padding: 20px; 
+            border-radius: 6px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.86); 
+            width: 80%; 
+            max-width: 300px; 
+            font-family: 'Mooli', sans-serif;
+        }
+
+        .formelements {
+            padding: 5px;
+            margin: 2px;
+            color: rgb(24, 24, 24);
+            font-family: 'Mooli', sans-serif;
+        }
+
+        input[type="file"]{
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Mooli', sans-serif;
+            font-weight: 600;
+            background-color: #eae16a;
+            color: rgb(0, 0, 0);
+        }
+
+        input[type="file"] #file-upload-button {
+            background-color: #000000;
+        }
+
+        button[type="submit"] {
+            background-color: #282726;
+            color: rgb(242, 233, 233);
+            padding: 6px 10px;
+            margin-top: -20px;
+            margin-left: 100px ;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid #000000;
+            font-family: 'Mooli', sans-serif;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #3b3b3b;
+        }
+
+        .errorclass {
+            background-color: rgba(255, 0, 0, 0.6);
+            padding: 2px;
+            font-size: 15.5px;
+            border-radius: 5px;
+        }
+
+        .successmessageclass {
+            background-color: rgba(0, 255, 4, 0.6);
+            padding: 2px;
+            font-size: 15.5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <h2>File Upload</h2>
+        </div>
+        <div class="header-right">
+            <form method="post" action="{% url 'logoutuser' %}" class="logout-button">
+                {% csrf_token %}
+                <button type="submit" class="logoutbutton">Logout</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="formcontainer">
+        <form method="post" enctype="multipart/form-data" class="formclass">
+            {% csrf_token %}
+            <div class="formelements">
+                <input type="file" name="file"></div>
+            <div class="formelements">
+                <button type="submit">Upload</button>
+            </div>
+            {% if error %}
+                <div class="errorclass"><b>{{ error }}</b></div>
+            {% endif %}
+            {% if successmessage %}
+                <div class="successmessageclass"><b>{{ successmessage }}</b></div>
+            {% endif %}
+        </form>
+    </div>
+
+</body>
+</html>
